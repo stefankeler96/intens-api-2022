@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class demoController {
+public class DemoController {
     @RequestMapping("/")
     public ResponseEntity<String> getRootDemo() {
 
-        return ResponseEntity.ok().body("Intens Praksa!");
+        return ResponseEntity.ok().body("Intens Praksa 2022!");
     }
 }
