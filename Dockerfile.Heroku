@@ -1,4 +1,3 @@
 FROM java:8
 COPY /target/spring-boot-docker.jar spring-boot-docker.jar
 ENTRYPOINT ["java","-jar","/spring-boot-docker.jar"]
-CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/spring-boot-docker.jar"]
