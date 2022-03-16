@@ -1,0 +1,8 @@
+version: "3.4"
+
+services:
+  server:
+    build: .
+    container_name: intens-api-praksa2022
+    ports:
+      - "8002:8001"

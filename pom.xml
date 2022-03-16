@@ -36,6 +36,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>intens-api-praksa2022</finalName>
 	</build>
 
 </project>
