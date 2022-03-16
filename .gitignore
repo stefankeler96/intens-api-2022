@@ -1,6 +1,6 @@
 HELP.md
 target/
-!target/spring-boot-docker.jar
+!target/spring-boot-docker-image.jar
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
