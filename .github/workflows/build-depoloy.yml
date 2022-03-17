@@ -16,17 +16,17 @@ jobs:
         with:
           java-version: '8'
           distribution: 'temurin'
-      -name: Build
-      run: mvn -B package --file pom.xml
-      -name: Heroku
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
-      run: heroku container:login
-      -name: Push
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
-      run: heroku container:push web --app ${{ secrets.HEROKU_APP_NAME }}
-      -name: Release
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
-      run: heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
+      - name: Build
+        run: mvn -B package --file pom.xml
+      - name: Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
+        run: heroku container:login
+      - name: Push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
+        run: heroku container:push web --app ${{ secrets.HEROKU_APP_NAME }}
+      - name: Release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_TOKEN }}
+        run: heroku container:release web --app ${{ secrets.HEROKU_APP_NAME }}
