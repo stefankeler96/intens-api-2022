@@ -8,4 +8,4 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Maven build/package
-        run: mvn package
+        run: mvn -B package --file pom.xml
