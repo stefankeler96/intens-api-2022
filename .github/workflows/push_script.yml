@@ -7,7 +7,5 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Maven build
-        run: mvn clean install
-      - name: Maven package
-        run: mvn package
+      - name: Maven build/package
+        run: mvn -B package --file pom.xml
