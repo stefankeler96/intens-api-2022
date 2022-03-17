@@ -1,7 +1,7 @@
-name: GitHub Actions Demo
+name: Maven push script
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Maven-push-script:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
