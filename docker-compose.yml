@@ -5,4 +5,4 @@ services:
     build: .
     container_name: intens-api-praksa2022
     ports:
-      - "8002:8001"
+      - "8002:5000"
