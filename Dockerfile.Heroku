@@ -1,4 +1,4 @@
 FROM openjdk:8-jdk
 VOLUME /tmp
 COPY /target/spring-boot-docker-image.jar spring-boot-docker-image.jar
-CMD [ "sh", "-c", "java -Dserver.port=$PORT -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -XX:+UseContainerSupport -Djava.security.egd=file:/dev/./urandom -jar /spring-boot-docker-image.jar" ]
+CMD [ "sh", "-c", "java -Dserver.port=$PORT -jar /spring-boot-docker-image.jar" ]
