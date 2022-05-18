@@ -13,6 +13,6 @@ ENV PORT=8080
 RUN mkdir /project
 COPY --from=build /usr/src/project/target/demo-project.jar /project
 WORKDIR /project
-RUN useradd –u 8877 nikola
-USER nikola
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
 CMD java -jar demo-project.jar
