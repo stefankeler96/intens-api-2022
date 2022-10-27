@@ -1,5 +1,5 @@
 # Intens Api DevOps
-Uputstvo za izdradu zadatka.
+Uputstvo za izdradu.
 
 ## Koraci
 1. Forkovati repozitorijum
