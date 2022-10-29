@@ -14,4 +14,4 @@ WORKDIR /opt/app
 
 COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 
-ENTRYPOINT ["java","-jar","spring-boot-api-tutorial.jar"]
+ENTRYPOINT ["java","-jar","praksa2022.jar"]
