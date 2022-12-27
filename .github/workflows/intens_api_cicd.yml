@@ -2,7 +2,7 @@ name: "[CI/CD] - Intens API 2022"
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
