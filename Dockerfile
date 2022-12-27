@@ -10,3 +10,5 @@ COPY --from=build /home/app/target/praksa2022-0.0.1-SNAPSHOT.jar /usr/local/lib/
 EXPOSE 8080
 
 ENTRYPOINT ["java","-jar","/usr/local/lib/praksa2022-0.0.1-SNAPSHOT.jar"]
+
+#test
