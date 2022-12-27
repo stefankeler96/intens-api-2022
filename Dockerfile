@@ -11,4 +11,4 @@ EXPOSE 8080
 
 ENTRYPOINT ["java","-jar","/usr/local/lib/praksa2022-0.0.1-SNAPSHOT.jar"]
 
-#test
+#testing automated_tests script
