@@ -1,17 +1,7 @@
-# AS <NAME> to name this stage as maven
-FROM maven:3.3.9 AS maven
-
-WORKDIR /usr/src/app
-COPY . /usr/src/app
-RUN mvn package 
-
-# For Java 8, 
-FROM adoptopenjdk/openjdk8:alpine-jre
-
-ARG JAR_FILE=praksa2022.jar
+FROM openjdk:8-jdk-alpine
 
 WORKDIR /opt/app
 
-COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
+COPY target/praksa2022-0.0.1-SNAPSHOT.jar /opt/app/
 
-CMD ["java","-jar","praksa2022.jar"]
+CMD ["java","-jar","praksa2022-0.0.1-SNAPSHOT.jar"]
