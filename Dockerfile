@@ -1,3 +1,4 @@
+#check user miki
 FROM openjdk:8-jdk-alpine
 RUN addgroup -S miki && adduser -S miki -G miki
 USER miki:miki
