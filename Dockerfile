@@ -1,7 +1,6 @@
 FROM openjdk:8-jdk-alpine
-
-WORKDIR /opt/app
-
-COPY target/praksa2022-0.0.1-SNAPSHOT.jar /opt/app/
-
-CMD ["java","-jar","praksa2022-0.0.1-SNAPSHOT.jar"]
+RUN addgroup -S miki && adduser -S miki -G miki
+USER miki:miki
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
