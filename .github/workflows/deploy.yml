@@ -1,4 +1,8 @@
 name: Deployment
+
+env: 
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
 on:
   push:
     branches:
@@ -15,8 +19,9 @@ jobs:
           java-version: '8'
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
-      - uses: akhileshns/heroku-deploy@v3.12.12 
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: "milenko.markovic@gmail.com"
+      - uses: Heroku Container Registry login
+        run: heroku container:login
+      - uses: Build and push
+        run: heroku container:push -a $HEROKU_API_KEY web
+      - uses: Release
+        run: heroku container:release -a $HEROKU_APP_NAME web  
