@@ -19,9 +19,9 @@ jobs:
           java-version: '8'
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
-      - uses: Heroku Container Registry login
+      - name: Heroku Container Registry login
         run: heroku container:login
-      - uses: Build and push
+      - name: Build and push
         run: heroku container:push -a $HEROKU_API_KEY web
-      - uses: Release
+      - name: Release
         run: heroku container:release -a $HEROKU_APP_NAME web  
