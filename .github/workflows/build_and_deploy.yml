@@ -1,0 +1,37 @@
+name: Deploy to Heroku
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  HEROKU_APP_NAME: springboot-intens
+  HEROKU_API_KEY: ${{ secrets.66327580-2d31-4fd3-9087-5fa2e13521c5 }}
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v1
+        with:
+          context: .
+          push: true
+          tags: registry.heroku.com/$HEROKU_APP_NAME/web
+
+      - name: Login to Heroku Container Registry
+        uses: heroku/heroku-cli-action@v1
+        with:
+          args: container:login
+          api-key: $HEROKU_API_KEY
+
+      - name: Deploy to Heroku
+        uses: heroku/heroku-cli-action@v1
+        with:
+          args: container:release web -a $HEROKU_APP_NAME
+          api-key: $HEROKU_API_KEY
