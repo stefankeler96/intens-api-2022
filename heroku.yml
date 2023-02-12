@@ -1,3 +1,16 @@
 build:
-  docker:
-    web: Dockerfile
+  # Define the build system to use
+  # Heroku uses Maven by default, but you can also use Gradle
+  # by specifying the "gradle" build system
+  system: maven
+  # Set the working directory for the build process
+  # The location of your pom.xml file
+  working-directory: .
+  # The command to run to build your application
+  command: mvn clean install
+
+run:
+  # The command to start your application
+  # The location of your jar file
+  # The PORT environment variable is automatically set by Heroku
+  command: java -jar target/praksa2022-0.0.1-SNAPSHOT.jar --server.port=$PORT
