@@ -11,17 +11,3 @@ build:
   # in this example, the script is in the root directory
   script: ./mvnw
 
-# specify the process types in your application
-# in this example, we only have one process type: web
-processes:
-  web: java -jar target/praksa2022-0.0.1-SNAPSHOT.jar
-
-# specify the environment variables for your application
-env:
-  JAVA_OPTS: -Xmx384m
-  JAVA_TOOL_OPTIONS: -Xmx384m
-
-# specify the application's port
-# this will be automatically set by Heroku
-# to the value of the $PORT environment variable
-port: $PORT
