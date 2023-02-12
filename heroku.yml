@@ -1,16 +1,27 @@
 build:
-  # Define the build system to use
-  # Heroku uses Maven by default, but you can also use Gradle
-  # by specifying the "gradle" build system
+  # specify the build system as Maven
   system: maven
-  # Set the working directory for the build process
-  # The location of your pom.xml file
-  working-directory: .
-  # The command to run to build your application
-  command: mvn clean install
+  # specify the location of the pom.xml file
+  # this is relative to the root of your application
+  # in this example, the pom.xml file is in the root directory
+  config:
+    MAVEN_CUSTOM_OPTS: "-Dmaven.repo.local=$MAVEN_CUSTOM_REPO"
+  # specify the path to the Maven wrapper script
+  # this is also relative to the root of your application
+  # in this example, the script is in the root directory
+  script: ./mvnw
 
-run:
-  # The command to start your application
-  # The location of your jar file
-  # The PORT environment variable is automatically set by Heroku
-  command: java -jar target/praksa2022-0.0.1-SNAPSHOT.jar --server.port=$PORT
+# specify the process types in your application
+# in this example, we only have one process type: web
+processes:
+  web: java -jar target/praksa2022-0.0.1-SNAPSHOT.jar
+
+# specify the environment variables for your application
+env:
+  JAVA_OPTS: -Xmx384m
+  JAVA_TOOL_OPTIONS: -Xmx384m
+
+# specify the application's port
+# this will be automatically set by Heroku
+# to the value of the $PORT environment variable
+port: $PORT
