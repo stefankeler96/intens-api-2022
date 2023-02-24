@@ -4,7 +4,7 @@
 
 This is a simple Maven Java application. It returns a simple string "Intens Praksa 2022!" when a GET call is made to [this endpoint](https://bogdan-intens.herokuapp.com/).
 
-### Running the app locally
+## Running the app locally
 
 For these purposes a Dockerfile is created. From the root folder run
 
@@ -26,7 +26,7 @@ Where:
 
 To test the app, make a GET request to http://localhost:8080 or just open the address in a browser.
 
-### App deployment
+## App deployment
 
 App deployment is done through Github Actions. There are two actions:
 1. Test - run whenever there is a PR created against the "master" branch
@@ -36,10 +36,10 @@ What do they do:
 1. Test - builds the code with Maven and runs unit tests
 2. Publish - creates an image of the application using Heroku cli and publishes it to the Heroku repo, replacing the previous one and using it to run the app
 
-### Environments
+## Environments
 
 When it comes to environments, it is rather simple - there are none.
 
-### Contribution
+## Contribution
 
 Is anyone really going to contribute to this?
