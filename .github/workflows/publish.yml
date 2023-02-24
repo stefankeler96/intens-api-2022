@@ -24,6 +24,8 @@ jobs:
       run: docker login --username=$EMAIL --password=$HEROKU_API_KEY registry.heroku.com
 
     - name: Create image
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:push web -a bogdan-intens --context-path .
 
     - name: Publish new image
