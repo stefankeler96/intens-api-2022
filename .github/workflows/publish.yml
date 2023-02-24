@@ -17,9 +17,13 @@ jobs:
         sudo apt-get install gnupg gnupg2 gnupg1
         curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
-    - name: Create image
+    - name: Login to Heroku Container Registry
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        EMAIL: ${{ secrets.EMAIL }}
+      run: docker login --username=$EMAIL --password=$HEROKU_API_KEY registry.heroku.com
+
+    - name: Create image
       run: heroku container:push web -a bogdan-intens --context-path .
 
     - name: Publish new image
