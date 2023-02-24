@@ -14,7 +14,7 @@ jobs:
 
     - name: Prepare Heroku
       run: |
-        apt-get install gnupg gnupg2 gnupg1
+        sudo apt-get install gnupg gnupg2 gnupg1
         curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
     - name: Create image

@@ -1,19 +1,45 @@
-# Intens Api DevOps
-Uputstvo za izradu.
+# INTENS INTRODUCTORY TEST APP
 
-## Koraci
-1. Forkovati repozitorijum
-2. Pokrenuti api lokalno koristeci alat po izboru (dodati env variablu PORT i dodeliti vrednost 8080 ili bilo koji drugi dostupan port)
-3. Napisati Dockerfile (5 bodova)
-4. Upraditi deploy apia na Heroku (5 bodova)
-5. Implemetirati CI CD koristeci GitHub Actions, potrebno je kreirati dve ci cd skripte. Prva skripta treba da se pokrece automatski prilikom kreiranja PR nad master granom i treba da izvrsi testove. 2. skripta treba da se pokrece automatski prilikom pusha na master granu i treba da izvrsava build apia, pakovanje i odlaganje docker slike na Heroku repo i zamenu stare za novu sliku na Herokuu. (10 bodova)
-6. Na email poslati url vaseg git repoa kao i url otpremljenog apia na Herokuu.
+## App Description
 
-### Korisni Linkovi
-https://devcenter.heroku.com/categories/deploying-with-docker
-https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+This is a simple Maven Java application. It returns a simple string "Intens Praksa 2022!" when a GET call is made to [this endpoint](https://bogdan-intens.herokuapp.com/).
 
-### Potrebni Alati
-1. Java 8 https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
-2. Eclipse / IntelliJ / Alat po izboru
-3. Docker https://www.docker.com/products/docker-desktop
+### Running the app locally
+
+For these purposes a Dockerfile is created. From the root folder run
+
+docker image build -t bogdan-intens:v1.0.0 .
+
+This will build the docker image needed to run the application. 
+
+The app requires an environment variable to be set, so that can be done:
+1. On Linux and Mac: export PORT=8080
+2. On Windows: setx PORT "8080"
+
+Now to run a container with this image:
+
+docker run -d -p 8080:8080 bogdan-intens:v1.0.0
+
+Where:
+    *-d stands for detached, meaning that the container that we are spinning up is not going to take control of our terminal 
+    *-p 8080:8080 is mapping the port 8080 of the container to our localhost:8080 so that we can test it on our own machine. 
+
+To test the app, make a GET request to http://localhost:8080 or just open the address in a browser.
+
+### App deployment
+
+App deployment is done through Github Actions. There are two actions:
+1. Test - run whenever there is a PR created against the "master" branch
+2. Publish - run whenever a push has been made to the "master" branch
+
+What do they do:
+1. Test - builds the code with Maven and runs unit tests
+2. Publish - creates an image of the application using Heroku cli and publishes it to the Heroku repo, replacing the previous one and using it to run the app
+
+### Environments
+
+When it comes to environments, it is rather simple - there are none.
+
+### Contribution
+
+Is anyone really going to contribute to this?
