@@ -1,0 +1,28 @@
+name: Package and Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Prepare Heroku
+      run: |
+        apt-get install gnupg gnupg2 gnupg1
+        curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+    - name: Create image
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:push web -a bogdan-intens --context-path .
+
+    - name: Publish new image
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:release web -a bogdan-intens
