@@ -1,0 +1,22 @@
+on:
+  pull_request:
+    branches: master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+        - name: Checkout
+          uses: actions/checkout@v1
+
+        - name:
+          uses: actions/setup-java@v1
+          with:
+                java-version: 8
+
+        - name: Setup Maven
+          uses: stCarolas/setup-maven@v4.5
+          with:
+                maven-version: 3.8.2
+        
+        - name: Tests
+          run:  mvn clean install        
