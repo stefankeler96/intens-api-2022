@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'intens-api-2023'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1638F80B119C4977BB1BD247341ABD33 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E0BF928BA488493A9240BD4B8F5F027A }}
           package: '*.jar'
