@@ -1,0 +1,24 @@
+name: Java (API CI)
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+ test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Java version
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+    - name: Build with Maven
+      run: mvn package -B
+
+    - name: Test with Maven
+      run:  mvn test
+    
